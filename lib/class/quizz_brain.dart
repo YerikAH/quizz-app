@@ -13,11 +13,15 @@ class QuizBrain {
     Question(questionText: "¿La luz es una onda mecánica?",questionAnswer:false),
     Question(questionText: "¿La física cuántica es solo relevante a nivel subatómico?",questionAnswer:false),
   ];
-  String getQuestionText(int position){
-    return _question[position].questionText;
+  int questionNumber = 0;
+  String getQuestionText(){
+    return _question[questionNumber].questionText;
   }
-  bool getQuestionAnswer(int position){
-    return _question[position].questionAnswer;
+  bool getQuestionAnswer(){
+    return _question[questionNumber].questionAnswer;
+  }
+  void nextQuestion(){
+    questionNumber++;
   }
 }
 
