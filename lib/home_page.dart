@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quizz/class/add_icon.dart';
 import 'package:quizz/class/quizz_brain.dart';
+import 'package:quizz/theme/theme_app.dart';
 import 'package:quizz/widgets/buttons_widget.dart';
 import 'package:quizz/widgets/question_widget.dart';
 
@@ -20,25 +21,27 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       bool resultCorrect = user.getQuestionAnswer(); 
       functions.addIcon(resultCorrect, value, scoreKeep);
+      user.nextQuestion();
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff001d3d),
-      body: ListView(
-        children:  [
-          QuestionWidget(user: user),
-
-          const SizedBox(height: 15.0,),
-          ButtonsWidget(colorButton: Colors.blue, textButton: "True", addIcon: addIcon, valueCompare: true,),
-          ButtonsWidget(colorButton: Colors.red, textButton: "False", addIcon: addIcon, valueCompare: false),
-
-          Row(
-            children: scoreKeep
-          )
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView(
+          children:  [
+            QuestionWidget(user: user),
+            const SizedBox(height: 15.0,),
+            ButtonsWidget(colorButton: ThemeApp.blue, textButton: "True", addIcon: addIcon, valueCompare: true,),
+            const SizedBox(height: 5.0,),
+            ButtonsWidget(colorButton: ThemeApp.gray, textButton: "False", addIcon: addIcon, valueCompare: false),
+            // Row(
+            //   children: scoreKeep
+            // )
+          ],
+        ),
       )
     );
   }

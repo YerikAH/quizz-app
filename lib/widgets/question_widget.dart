@@ -13,7 +13,7 @@ class QuestionWidget  extends StatelessWidget {
         child: Text(
           user.getQuestionText(),
           textAlign: TextAlign.center,
-          style: const TextStyle(fontSize: 22.2, color: Colors.white),
+          style: Theme.of(context).textTheme.headline1,
         ),
       )
     );

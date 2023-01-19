@@ -9,14 +9,16 @@ class ButtonsWidget extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return  Container(
-    child: MaterialButton(
+    return  TextButton(
+      style: TextButton.styleFrom(
+        backgroundColor: colorButton,
+        padding: const EdgeInsets.all(10.0),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))
+      ),
       onPressed: (){
         addIcon(valueCompare);
       }, 
-      color: colorButton,
-      child: Text(textButton),
-    )
+      child: Text(textButton,style: Theme.of(context).textTheme.subtitle1,),
     );
   }
 }
