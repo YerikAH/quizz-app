@@ -9,8 +9,6 @@ class QuestionWidget  extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
-
-      
       child: Column(
         children: [
           Container(
@@ -20,22 +18,17 @@ class QuestionWidget  extends StatelessWidget {
               image: DecorationImage(image: AssetImage(user.getQuestionImage())),
             ),
           ),
-          const SizedBox(height: 80.0,),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "question ${user.questionNumber + 1} of ${user.countLengthList()}",
-                textAlign: TextAlign.left,
-                style: Theme.of(context).textTheme.headline2,
-              ),
-
-              Text(
-                user.getQuestionText(),
-                textAlign: TextAlign.left,
-                style: Theme.of(context).textTheme.headline1,
-              ),
-            ],
+          const SizedBox(height: 50.0,),
+          Text(
+            "question ${user.questionNumber + 1} of ${user.countLengthList()}",
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.headline2,
+          ),
+          const SizedBox(height: 10.0,),
+          Text(
+            user.getQuestionText(),
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.headline1,
           ),
         ],
       ),

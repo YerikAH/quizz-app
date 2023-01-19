@@ -29,21 +29,19 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children:  [
-            QuestionWidget(user: user),
-            const SizedBox(height: 15.0,),
-            ButtonsWidget(colorButton: ThemeApp.blue, textButton: "True", addIcon: addIcon, valueCompare: true,),
-            const SizedBox(height: 5.0,),
-            ButtonsWidget(colorButton: ThemeApp.gray, textButton: "False", addIcon: addIcon, valueCompare: false),
-            // Row(
-            //   children: scoreKeep
-            // )
-          ],
-        ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children:  [
+          QuestionWidget(user: user),
+          const SizedBox(height: 30.0,),
+          ButtonsWidget(colorButton: ThemeApp.blue, textButton: "True", addIcon: addIcon, valueCompare: true,),
+          const SizedBox(height: 5.0,),
+          ButtonsWidget(colorButton: ThemeApp.gray, textButton: "False", addIcon: addIcon, valueCompare: false),
+          // Row(
+          //   children: scoreKeep
+          // )
+        ],
       )
     );
   }
