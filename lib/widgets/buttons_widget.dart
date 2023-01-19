@@ -9,16 +9,19 @@ class ButtonsWidget extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return  TextButton(
-      style: TextButton.styleFrom(
-        backgroundColor: colorButton,
-        padding: const EdgeInsets.all(12.0),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0))
+    return  Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: TextButton(
+        style: TextButton.styleFrom(
+          backgroundColor: colorButton,
+          padding: const EdgeInsets.all(12.0),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0))
+        ),
+        onPressed: (){
+          addIcon(valueCompare);
+        }, 
+        child: Text(textButton,style: Theme.of(context).textTheme.subtitle1,),
       ),
-      onPressed: (){
-        addIcon(valueCompare);
-      }, 
-      child: Text(textButton,style: Theme.of(context).textTheme.subtitle1,),
     );
   }
 }

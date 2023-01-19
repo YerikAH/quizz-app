@@ -22,15 +22,17 @@ class _HomePageState extends State<HomePage> {
       bool resultCorrect = user.getQuestionAnswer(); 
       functions.addIcon(resultCorrect, value, scoreKeep);
       user.nextQuestion();
+      
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: ListView(
+      body: Container(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.center,
           children:  [
             QuestionWidget(user: user),
             const SizedBox(height: 15.0,),

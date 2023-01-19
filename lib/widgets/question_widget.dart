@@ -8,20 +8,34 @@ class QuestionWidget  extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            "question ${user.nextQuestion()} of ${user.countLengthList()}",
-            textAlign: TextAlign.left,
-            style: Theme.of(context).textTheme.headline2,
-          ),
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
 
-          Text(
-            user.getQuestionText(),
-            textAlign: TextAlign.left,
-            style: Theme.of(context).textTheme.headline1,
+      
+      child: Column(
+        children: [
+          Container(
+            width: 125.0,
+            height: 125.0,
+            decoration: BoxDecoration(
+              image: DecorationImage(image: AssetImage(user.getQuestionImage())),
+            ),
+          ),
+          const SizedBox(height: 80.0,),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "question ${user.questionNumber + 1} of ${user.countLengthList()}",
+                textAlign: TextAlign.left,
+                style: Theme.of(context).textTheme.headline2,
+              ),
+
+              Text(
+                user.getQuestionText(),
+                textAlign: TextAlign.left,
+                style: Theme.of(context).textTheme.headline1,
+              ),
+            ],
           ),
         ],
       ),
