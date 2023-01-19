@@ -12,8 +12,8 @@ class ButtonsWidget extends StatelessWidget {
     return  TextButton(
       style: TextButton.styleFrom(
         backgroundColor: colorButton,
-        padding: const EdgeInsets.all(10.0),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))
+        padding: const EdgeInsets.all(12.0),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0))
       ),
       onPressed: (){
         addIcon(valueCompare);

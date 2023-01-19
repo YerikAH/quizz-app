@@ -7,15 +7,24 @@ class QuestionWidget  extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Text(
-          user.getQuestionText(),
-          textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.headline1,
-        ),
-      )
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "question ${user.nextQuestion()} of ${user.countLengthList()}",
+            textAlign: TextAlign.left,
+            style: Theme.of(context).textTheme.headline2,
+          ),
+
+          Text(
+            user.getQuestionText(),
+            textAlign: TextAlign.left,
+            style: Theme.of(context).textTheme.headline1,
+          ),
+        ],
+      ),
     );
   }
 }

@@ -7,21 +7,29 @@ class ThemeApp{
   static const Color gray = Color(0xff383D6E);
   static const Color blue = Color(0xff3E9EFD);
 
+
   static final ThemeData appConfig = ThemeData.light().copyWith(
     scaffoldBackgroundColor: black,
     textTheme: ThemeData.light().textTheme.copyWith(
       headline1: const TextStyle(
         fontFamily: "Open Sans",
         color: white,
-        fontSize: 22.0,
-        fontWeight: FontWeight.w700,
+        fontSize: 20.0,
+        fontWeight: FontWeight.w600,
+      ),
+      headline2: TextStyle(
+        fontFamily: "Open Sans",
+        color: white.withOpacity(0.8),
+        fontSize: 14.0,
+        fontWeight: FontWeight.w400,
       ),
       subtitle1: const TextStyle(
         fontFamily: "Open Sans",
         color: white,
         fontSize: 14.0,
         fontWeight: FontWeight.w500,
-      )
+      ),
+
     )
   );
 }
