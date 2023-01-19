@@ -5,7 +5,8 @@ class ButtonsWidget extends StatelessWidget {
   final String textButton;
   final Function addIcon;
   final bool valueCompare;
-  const ButtonsWidget({Key? key, required this.colorButton, required this.textButton, required this.addIcon, required this.valueCompare}) : super(key: key);
+  final Function modal;
+  const ButtonsWidget({Key? key, required this.colorButton, required this.textButton, required this.addIcon, required this.valueCompare, required this.modal}) : super(key: key);
   
   @override
   Widget build(BuildContext context) {
@@ -19,6 +20,7 @@ class ButtonsWidget extends StatelessWidget {
         ),
         onPressed: (){
           addIcon(valueCompare);
+          modal(context);
         }, 
         child: Text(textButton,style: Theme.of(context).textTheme.subtitle1,),
       ),

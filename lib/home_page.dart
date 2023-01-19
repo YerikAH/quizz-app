@@ -25,6 +25,25 @@ class _HomePageState extends State<HomePage> {
       
     });
   }
+  void displayDialogAndroid(BuildContext context) {
+    showDialog(
+      barrierDismissible: false,
+      context: context, 
+      barrierColor: Colors.transparent,
+
+      builder: ( context ) {
+        return Dialog(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          
+          child: Icon(Icons.check,size: 120.0,)
+        );
+      }
+    );
+    Future.delayed(Duration(seconds: 1), () {
+      Navigator.pop(context);
+    });
+  } 
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +54,9 @@ class _HomePageState extends State<HomePage> {
         children:  [
           QuestionWidget(user: user),
           const SizedBox(height: 30.0,),
-          ButtonsWidget(colorButton: ThemeApp.blue, textButton: "True", addIcon: addIcon, valueCompare: true,),
+          ButtonsWidget(colorButton: ThemeApp.blue, textButton: "True", addIcon: addIcon, valueCompare: true, modal: displayDialogAndroid,),
           const SizedBox(height: 5.0,),
-          ButtonsWidget(colorButton: ThemeApp.gray, textButton: "False", addIcon: addIcon, valueCompare: false),
+          ButtonsWidget(colorButton: ThemeApp.gray, textButton: "False", addIcon: addIcon, valueCompare: false, modal: displayDialogAndroid,),
           // Row(
           //   children: scoreKeep
           // )
