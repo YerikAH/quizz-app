@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:quizz/class/add_icon.dart';
 import 'package:quizz/class/quizz_brain.dart';
@@ -22,25 +23,19 @@ class _HomePageState extends State<HomePage> {
       bool resultCorrect = user.getQuestionAnswer(); 
       functions.addIcon(resultCorrect, value, scoreKeep);
       user.nextQuestion();
-      
     });
   }
-  void displayDialogAndroid(BuildContext context) {
+  void displayDialogAndroid(BuildContext context, bool value) {
     showDialog(
-      barrierDismissible: false,
       context: context, 
-      barrierColor: Colors.transparent,
-
       builder: ( context ) {
-        return Dialog(
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          
-          child: Icon(Icons.check,size: 120.0,)
+        return BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 7.0, sigmaY: 7.0),
+          child: Container(),
         );
       }
     );
-    Future.delayed(Duration(seconds: 1), () {
+    Future.delayed(const Duration(seconds: 1), () {
       Navigator.pop(context);
     });
   } 
@@ -54,12 +49,9 @@ class _HomePageState extends State<HomePage> {
         children:  [
           QuestionWidget(user: user),
           const SizedBox(height: 30.0,),
-          ButtonsWidget(colorButton: ThemeApp.blue, textButton: "True", addIcon: addIcon, valueCompare: true, modal: displayDialogAndroid,),
+          ButtonsWidget(colorButton: ThemeApp.blue, addIcon: addIcon, valueCompare: true, modal: displayDialogAndroid,),
           const SizedBox(height: 5.0,),
-          ButtonsWidget(colorButton: ThemeApp.gray, textButton: "False", addIcon: addIcon, valueCompare: false, modal: displayDialogAndroid,),
-          // Row(
-          //   children: scoreKeep
-          // )
+          ButtonsWidget(colorButton: ThemeApp.gray,addIcon: addIcon, valueCompare: false, modal: displayDialogAndroid,),
         ],
       )
     );

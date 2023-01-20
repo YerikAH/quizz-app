@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 
 class ButtonsWidget extends StatelessWidget {
   final Color colorButton;
-  final String textButton;
   final Function addIcon;
   final bool valueCompare;
   final Function modal;
-  const ButtonsWidget({Key? key, required this.colorButton, required this.textButton, required this.addIcon, required this.valueCompare, required this.modal}) : super(key: key);
+  const ButtonsWidget({Key? key, required this.colorButton, required this.addIcon, required this.valueCompare, required this.modal}) : super(key: key);
   
   @override
   Widget build(BuildContext context) {
@@ -20,9 +19,9 @@ class ButtonsWidget extends StatelessWidget {
         ),
         onPressed: (){
           addIcon(valueCompare);
-          modal(context);
+          modal(context, valueCompare);
         }, 
-        child: Text(textButton,style: Theme.of(context).textTheme.subtitle1,),
+        child: Text(valueCompare ? "True" : "False",style: Theme.of(context).textTheme.subtitle1,),
       ),
     );
   }
