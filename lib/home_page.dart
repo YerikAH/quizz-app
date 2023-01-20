@@ -22,7 +22,13 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       bool resultCorrect = user.getQuestionAnswer(); 
       functions.addIcon(resultCorrect, value, scoreKeep);
-      user.nextQuestion();
+      if(user.questionNumber == 9){
+        print("This is the end");
+      }else{
+        user.nextQuestion();
+      }
+      print(user.questionNumber);
+      print(user.countLengthList());
     });
   }
   void displayDialogAndroid(BuildContext context, bool value) {
@@ -35,7 +41,7 @@ class _HomePageState extends State<HomePage> {
         );
       }
     );
-    Future.delayed(const Duration(seconds: 1), () {
+    Future.delayed(const Duration(milliseconds: 300), () {
       Navigator.pop(context);
     });
   } 
@@ -43,16 +49,19 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children:  [
-          QuestionWidget(user: user),
-          const SizedBox(height: 30.0,),
-          ButtonsWidget(colorButton: ThemeApp.blue, addIcon: addIcon, valueCompare: true, modal: displayDialogAndroid,),
-          const SizedBox(height: 5.0,),
-          ButtonsWidget(colorButton: ThemeApp.gray,addIcon: addIcon, valueCompare: false, modal: displayDialogAndroid,),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children:  [
+            const SizedBox(height: 150.0,),
+            QuestionWidget(user: user),
+            const SizedBox(height: 30.0,),
+            ButtonsWidget(colorButton: ThemeApp.blue, addIcon: addIcon, valueCompare: true, modal: displayDialogAndroid,),
+            const SizedBox(height: 5.0,),
+            ButtonsWidget(colorButton: ThemeApp.gray,addIcon: addIcon, valueCompare: false, modal: displayDialogAndroid,),
+            const SizedBox(height: 150.0,),
+          ],
+        ),
       )
     );
   }
