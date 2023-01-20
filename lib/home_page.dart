@@ -23,27 +23,61 @@ class _HomePageState extends State<HomePage> {
       bool resultCorrect = user.getQuestionAnswer(); 
       functions.addIcon(resultCorrect, value, scoreKeep);
       if(user.questionNumber == 9){
-        print("This is the end");
+        endQuestion(context);
       }else{
         user.nextQuestion();
       }
-      print(user.questionNumber);
-      print(user.countLengthList());
     });
   }
-  void displayDialogAndroid(BuildContext context, bool value) {
+  void endQuestion(BuildContext context) {
     showDialog(
+      barrierDismissible: false,
       context: context, 
       builder: ( context ) {
-        return BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 7.0, sigmaY: 7.0),
-          child: Container(),
+        return AlertDialog(
+          backgroundColor: ThemeApp.black,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25.0)),
+          title: Text("Your score was:",style: Theme.of(context).textTheme.headline1,),
+          content: Text("${functions.countCorrect}/${user.countLengthList()}",textAlign: TextAlign.center,style: Theme.of(context).textTheme.headline3,),
+          actions: [
+            TextButton(
+              onPressed: (){
+                setState(() {
+                  functions.countCorrect = 0;
+                  user.questionNumber = 0;
+                  Navigator.pop(context);
+  
+                });
+                }, 
+              style: TextButton.styleFrom(
+                backgroundColor: ThemeApp.gray,
+                foregroundColor: ThemeApp.white,
+                padding: const EdgeInsets.all(12.0),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0))
+              ),
+              child: Text("Try again",style: Theme.of(context).textTheme.subtitle1,)
+            )
+          ],
         );
       }
     );
-    Future.delayed(const Duration(milliseconds: 300), () {
-      Navigator.pop(context);
-    });
+  } 
+
+  void nextQuestionUi(BuildContext context) {
+    if(user.questionNumber != 9){
+      showDialog(
+        context: context, 
+        builder: ( context ) {
+          return BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 7.0, sigmaY: 7.0),
+            child: Container(),
+          );
+        }
+      );
+      Future.delayed(const Duration(milliseconds: 300), () {
+        Navigator.pop(context);
+      });
+    }
   } 
 
   @override
@@ -56,9 +90,9 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(height: 150.0,),
             QuestionWidget(user: user),
             const SizedBox(height: 30.0,),
-            ButtonsWidget(colorButton: ThemeApp.blue, addIcon: addIcon, valueCompare: true, modal: displayDialogAndroid,),
+            ButtonsWidget(colorButton: ThemeApp.blue, addIcon: addIcon, valueCompare: true, modal: nextQuestionUi,),
             const SizedBox(height: 5.0,),
-            ButtonsWidget(colorButton: ThemeApp.gray,addIcon: addIcon, valueCompare: false, modal: displayDialogAndroid,),
+            ButtonsWidget(colorButton: ThemeApp.gray,addIcon: addIcon, valueCompare: false, modal: nextQuestionUi,),
             const SizedBox(height: 150.0,),
           ],
         ),

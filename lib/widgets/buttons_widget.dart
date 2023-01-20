@@ -19,7 +19,7 @@ class ButtonsWidget extends StatelessWidget {
         ),
         onPressed: (){
           addIcon(valueCompare);
-          modal(context, valueCompare);
+          modal(context);
         }, 
         child: Text(valueCompare ? "True" : "False",style: Theme.of(context).textTheme.subtitle1,),
       ),

@@ -23,6 +23,12 @@ class ThemeApp{
         fontSize: 14.0,
         fontWeight: FontWeight.w400,
       ),
+      headline3: TextStyle(
+        fontFamily: "Open Sans",
+        color: white.withOpacity(0.3),
+        fontSize: 45.0,
+        fontWeight: FontWeight.w800,
+      ),
       subtitle1: const TextStyle(
         fontFamily: "Open Sans",
         color: white,
