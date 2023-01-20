@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Quizz App',
-      home: HomePage(),
+      home: const HomePage(),
       theme: ThemeApp.appConfig,
     );
   }

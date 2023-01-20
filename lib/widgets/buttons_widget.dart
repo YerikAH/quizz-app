@@ -4,8 +4,7 @@ class ButtonsWidget extends StatelessWidget {
   final Color colorButton;
   final Function addIcon;
   final bool valueCompare;
-  final Function modal;
-  const ButtonsWidget({Key? key, required this.colorButton, required this.addIcon, required this.valueCompare, required this.modal}) : super(key: key);
+  const ButtonsWidget({Key? key, required this.colorButton, required this.addIcon, required this.valueCompare}) : super(key: key);
   
   @override
   Widget build(BuildContext context) {
@@ -18,8 +17,7 @@ class ButtonsWidget extends StatelessWidget {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0))
         ),
         onPressed: (){
-          addIcon(valueCompare);
-          modal(context);
+          addIcon(valueCompare,context);
         }, 
         child: Text(valueCompare ? "True" : "False",style: Theme.of(context).textTheme.subtitle1,),
       ),
